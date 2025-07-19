@@ -30,6 +30,8 @@ class TeacherResource extends Resource
 
     protected static ?string $navigationLabel = "Data Guru";
 
+    protected static ?string $navigationGroup = 'Data Akademik';
+
     public static function form(Form $form): Form
     {
         return $form

@@ -180,5 +180,27 @@ Membuat Group untuk di sidebar :
 
 protected static ?string $NavigationGroup = 'Source';
 
+dan juga navigatiosort 
 
+protected static ?string $NavigationSort = 31;
+
+untuk Menghilangkan Resource di sidebar : protected static bool $shouldRegisterNavigation = false;
+
+14 Add(menambah) Tailwind
+
+Tailwind digunakan untuk Frontend nya
+
+Menambahkan inputan didalam vite.config.js :
+    'resources/css/app.css',
+    'resources/js/app.js',
+
+untuk menambahkan tailwind nya di masukkan di dalam 'resources/css/app.css'
+
+(Masih Belum Berhasil)
+
+15 Tab Filter
+Membuat FIlter records di ListResource (menggunakan Resource Default (Data Master), buak Resource --simple).
+Seperti Contoh di Documentation Filament :
+![alt text](readme-asset/tab-filter.png)
+Bisa ditambhkan sesuai dengan kebutuhan
 

@@ -25,6 +25,12 @@ class CategoryNilaiResource extends Resource
 
     protected static ?string $navigationLabel = "Kategori Nilai"; //merubah nama / label di sidebar
 
+    protected static ?string $navigationGroup = "Source"; //Membuat Group di sidebar
+
+    protected static ?string $NavigationSort = '31';
+    
+    
+
     public static function form(Form $form): Form
     {
         return $form

@@ -38,6 +38,8 @@ class StudentResource extends Resource
 
     protected static ?string $navigationLabel = "Data Murid";
 
+    protected static ?string $navigationGroup = 'Data Akademik';
+
     public static function form(Form $form): Form
     {
         return $form

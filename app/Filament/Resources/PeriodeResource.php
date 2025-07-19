@@ -23,6 +23,8 @@ class PeriodeResource extends Resource
 
     protected static ?string $navigationLabel = "Periode"; //merubah nama / label di sidebar
 
+    protected static ?string $navigationGroup = "Setting"; //merubah nama / label di sidebar
+
     public static function form(Form $form): Form
     {
         return $form

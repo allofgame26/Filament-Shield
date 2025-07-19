@@ -2,10 +2,13 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\Resources\PeriodeResource;
+use Filament\Facades\Filament;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
+use Filament\Navigation\UserMenuItem;
 use Filament\Pages;
 use Filament\Panel;
 use Filament\PanelProvider;
@@ -60,5 +63,16 @@ class AdminPanelProvider extends PanelProvider
                 Authenticate::class,
             ])
             ->viteTheme('resources/css/filament/admin/theme.css');
+    }
+
+    public function boot(): void{
+        Filament::serving(function(){
+            Filament::registerUserMenuItems([
+                UserMenuItem::make()
+                ->label('Settings')
+                ->url(PeriodeResource::getUrl())
+                ->icon('heroicon-s-cog'),
+            ]);
+        });
     }
 }

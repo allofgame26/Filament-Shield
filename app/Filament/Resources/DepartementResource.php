@@ -22,6 +22,10 @@ class DepartementResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $navigationGroup = 'Source';
+
+    protected static ?string $navigationLabel = 'Data Departement';
+
     public static function form(Form $form): Form
     {
         return $form
