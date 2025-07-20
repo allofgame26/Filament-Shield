@@ -218,3 +218,30 @@ php artisan make:filament-relation-manager ClassroomResource subjects name --att
 Menambahkan berapa coding di model Classroom dan Objek untuk relasi many to many
 menambahkan code didalam Subject Relation Manager
 dan juga attach tersebut hanya bisa dimiliki 1 relasi saja, tidak bisa diduplikat atau dari relasi yang sama sepert a -> b harus 1, tidak bisa lebih dari 1  
+
+17 Role and Permission
+menggunakan Spatie Role dan Permission
+
+mendownload spatie : composer require spatie/laravel-permission
+
+publish migrasi dan config file :
+
+php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"
+
+clear Config cache : 
+
+php artisan optimize:clear
+
+setelah itu migrate : php artisan migrate
+
+menginstall plugins spatie : composer require althinect/filament-spatie-roles-permissions
+
+publish spatie : php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"
+
+Memasukkan Config : php artisan vendor:publish --tag="filament-spatie-roles-permissions-config" --force
+
+masuk kedalam config tersebut, dan ganti default_guard_name menjadi web
+
+Mengatur Navigasi Sidebar menggunakan NavigationItem / NavigationGroup di adminpanel
+
+(belum mengatur Policy Fitur)
