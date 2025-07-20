@@ -15,6 +15,8 @@ membuat Resource Default menggunakan relasi => php artisan make:filament-resourc
 
 Melink kan storage : php artisan storage:link
 
+mengganti App_URL di dalam .env => APP_URL=http://localhost:8000 / http://127.0.0.1:8000 
+
 4. Translation
 
 Membuat Kolom Index didalam list : 
@@ -202,5 +204,17 @@ untuk menambahkan tailwind nya di masukkan di dalam 'resources/css/app.css'
 Membuat FIlter records di ListResource (menggunakan Resource Default (Data Master), buak Resource --simple).
 Seperti Contoh di Documentation Filament :
 ![alt text](readme-asset/tab-filter.png)
-Bisa ditambhkan sesuai dengan kebutuhan
+Bisa ditambahkan sesuai dengan kebutuhan
 
+16 Pivot Table
+Menambahkan dan mengedit Infolist Student, membuat View nya lebih bagus dan Qrcode(nis) didalam infolist/view student
+QRCode berhasil
+
+Membuat Migration dan Model untuk classroom_subject : php artisan make:model ClassroomSubject -m
+
+membuat attaching anda detaching records
+
+php artisan make:filament-relation-manager ClassroomResource subjects name --attach ->menambhakn SubjectRelation
+Menambahkan berapa coding di model Classroom dan Objek untuk relasi many to many
+menambahkan code didalam Subject Relation Manager
+dan juga attach tersebut hanya bisa dimiliki 1 relasi saja, tidak bisa diduplikat atau dari relasi yang sama sepert a -> b harus 1, tidak bisa lebih dari 1  

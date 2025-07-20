@@ -13,7 +13,14 @@ use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
+use Filament\Infolists\Components\Fieldset;
+use Filament\Infolists\Components\Grid;
+use Filament\Infolists\Components\Group;
+use Filament\Infolists\Components\ImageEntry;
+use Filament\Infolists\Components\Section;
+use Filament\Infolists\Components\Split;
 use Filament\Infolists\Components\TextEntry;
+use Filament\Infolists\Components\ViewEntry;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Actions\BulkAction;
@@ -27,6 +34,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Facades\Storage;
 use stdClass;
 use Symfony\Component\HttpKernel\Profiler\Profile;
 
@@ -94,7 +102,9 @@ class StudentResource extends Resource
                             }
                         ),
                 ImageColumn::make('profile')
-                    ->label('Foto Profil'),
+                    ->label('Foto Profil')
+                    ->disk('public')
+                    ->url(fn ($record) => Storage::url($record->profile)),
                 TextColumn::make('nis')
                     ->label('NIS')
                     ->searchable(),
@@ -199,10 +209,51 @@ class StudentResource extends Resource
     {
         return $infolist
             ->schema([
-                TextEntry::make('name')
-                    ->label('Nama'),
-                TextEntry::make('nis')
-                    ->label('Nomor Induk Sekolah'),
+                // TextEntry::make('name')
+                //     ->label('Nama'),
+                // TextEntry::make('nis')
+                //     ->label('Nomor Induk Sekolah'),
+
+                Section::make()
+                    ->schema([
+                        Fieldset::make('Biodata')
+                            ->schema([
+                                Split::make([
+                                    ImageEntry::make('profile')
+                                    ->hiddenLabel()
+                                    ->grow(false),
+                                Grid::make(2)
+                                    ->schema([
+                                        Group::make([
+                                            TextEntry::make('nis'),
+                                            TextEntry::make('name'),
+                                            TextEntry::make('gender'),
+                                            TextEntry::make('birthday'),
+                                        ])
+                                        ->inlineLabel()
+                                        ->columns(1),
+
+                                        Group::make([
+                                            TextEntry::make('religion'),
+                                            TextEntry::make('contact'),
+                                            TextEntry::make('status')
+                                            ->badge()
+                                            ->color(fn (string $state): string => match($state){
+                                                'accept' => 'success',
+                                                'off' => 'danger',
+                                                'grade' => 'success',
+                                                'move' => 'warning',
+                                                'wait' => 'gray',
+                                            }),
+                                            ViewEntry::make('QRCode')
+                                            ->view('filament.resources.students.qrcode'),
+                                        ])
+                                        ->inlineLabel()
+                                        ->columns(1),
+                                    ])
+                                ]) ->from('lg')
+                            ])->columns(1)
+                    ])->columns(2)
             ]);
     }
 }

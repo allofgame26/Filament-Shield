@@ -4,22 +4,16 @@ namespace App\Filament\Resources\ClassroomResource\Pages;
 
 use App\Filament\Resources\ClassroomResource;
 use Filament\Actions;
-use Filament\Resources\Pages\ManageRecords;
+use Filament\Resources\Pages\EditRecord;
 
-class ManageClassrooms extends ManageRecords
+class EditClassroom extends EditRecord
 {
     protected static string $resource = ClassroomResource::class;
 
     protected function getHeaderActions(): array
     {
         return [
-            Actions\CreateAction::make(),
+            Actions\DeleteAction::make(),
         ];
     }
-
-    //function mengganti nama label / title
-    public function getTitle(): string {
-        return "Class Room";
-    }
-    
 }

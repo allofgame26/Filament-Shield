@@ -12,6 +12,10 @@ class Classroom extends Model
     protected $guarded = [];
 
     public function classroom(){
-        return $this->hasMany(homerooms::class,'classrooms_id','id');
+        return $this->hasMany(homerooms::class);
+    }
+
+    public function subject(){
+        return $this->belongsToMany(Subject::class)->withPivot('deskripsi');
     }
 }

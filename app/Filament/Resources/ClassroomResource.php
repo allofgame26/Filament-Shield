@@ -4,6 +4,8 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\ClassroomResource\Pages;
 use App\Filament\Resources\ClassroomResource\RelationManagers;
+use App\Filament\Resources\ClassroomResource\RelationManagers\SubjectRelationManager;
+use App\Filament\Resources\ClassroomResource\RelationManagers\SubjectsRelationManager;
 use App\Models\Classroom;
 use Filament\Forms;
 use Filament\Forms\Components\Card;
@@ -58,10 +60,19 @@ class ClassroomResource extends Resource
             ]);
     }
 
+    public static function getRelations(): array
+    {
+        return [
+            SubjectRelationManager::class
+        ];
+    }
+
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ManageClassrooms::route('/'),
+            'index' => Pages\ListClassrooms::route('/'),
+            'create' => Pages\CreateClassroom::route('/create'),
+            'edit' => Pages\EditClassroom::route('/{record}/edit'),
         ];
     }
 }
