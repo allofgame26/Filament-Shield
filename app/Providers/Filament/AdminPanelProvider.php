@@ -27,10 +27,12 @@ use App\Filament\Resources\DepartementResource;
 use App\Filament\Resources\StudentResource;
 use App\Filament\Resources\SubjectResource;
 use App\Filament\Resources\TeacherResource;
+use App\Filament\Resources\UserResource;
 use App\Models\Student;
 use Filament\Navigation\NavigationBuilder;
 use Filament\Navigation\NavigationGroup;
 use Filament\Navigation\NavigationItem;
+use Filament\Pages\Dashboard;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -84,6 +86,7 @@ class AdminPanelProvider extends PanelProvider
                             NavigationItem::make('Dashboard')
                             ->icon('heroicon-o-home')
                             ->isActiveWhen(fn ():bool => request()->routeIs('filament.admin.pages.dashboard'))
+                            ->url(fn (): string => Dashboard::getUrl())
                         ]),
                     NavigationGroup::make('Data Akademik')
                         ->items([
@@ -100,6 +103,7 @@ class AdminPanelProvider extends PanelProvider
                     NavigationGroup::make('Setting')
                         ->items([
                             ...PeriodeResource::getNavigationItems(),
+                            ...UserResource::getNavigationItems(),
                             NavigationItem::make('Roles')
                             ->icon('heroicon-o-user-group')
                             ->isActiveWhen(fn ():bool => request()->routeIs([

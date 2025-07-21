@@ -245,3 +245,35 @@ masuk kedalam config tersebut, dan ganti default_guard_name menjadi web
 Mengatur Navigasi Sidebar menggunakan NavigationItem / NavigationGroup di adminpanel
 
 (belum mengatur Policy Fitur)
+
+18 User Resource Role Permssion
+
+Membuat Fitur Users (Model, Resource (Default, dikarenakan ada relasi))
+
+Menambhakan HasRole di dalam model user "use HasRoles"
+
+mengedit dan menambahkan properti didalam "resource.php" 
+![alt text](readme-asset/visible-roles.png)
+
+->visible(static::shouldRegisterNavigation())
+
+dan didalam Resource ditambah kan : 
+public static function shouldRegisterNavigation(): bool
+    {
+        if(auth()->user()->can('classroom'))
+            return true;
+        else
+            return false;
+    }
+
+membuat artisan : php artisan make:policy "NamaPolicy" --model="Nama Model"
+
+dan  memasukkan di dalam ViewAny() :
+if($user->can('classroom'))
+            return true;
+        else
+            return false;
+
+atau bisa langsung didalam ClassroomResource : 
+
+![alt text](readme-asset/canView-filament.png)
