@@ -79,6 +79,7 @@ class AdminPanelProvider extends PanelProvider
             ->plugins([
                 FilamentSpatieRolesPermissionsPlugin::make(),
             ])
+            ->databaseNotifications()
             ->navigation(function (NavigationBuilder $builder): NavigationBuilder{
                 return $builder->groups([
                     NavigationGroup::make()

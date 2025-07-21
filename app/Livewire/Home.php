@@ -12,6 +12,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Form;
+use Filament\Notifications\Notification;
 use Livewire\Attributes\Session;
 use Livewire\Component;
 
@@ -84,6 +85,13 @@ class Home extends Component implements HasForms
             $data['profile'] = 'student/'.$fileName;
 
             Student::insert($data);
+
+            Notification::make()
+                ->success()
+                ->title('Murid'. $this->name. ' Telah Mendaftar')
+                ->sendToDatabase(User::whereHas('roles', function ($query) {
+                    $query->where('name','superadmin');
+                }));
 
             Session()->flash('message','Save berhasil');
         }

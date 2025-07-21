@@ -285,3 +285,10 @@ untuk mengedit Fitur Role dan Permission masih belum bisa
 Membuat Register Untuk student di frontend, dan juga membuat query untuk menyaring data di dalam model user
 
 tetapi ada yang tidak sukses, yaitu membuat tampilan fronent menggunakan livewire, dikarenakan tailwind nya tidak bisa di sambungkan, dan tools Vite nya juga
+
+20 Notifiaction
+Mendownload Vendor notification : composer require filament/notifications
+lalu memasukkan : ->databaseNotifications() ke dalam adminpanel
+install Notifivationnya : php artisan filament:install --notifications
+membuat notifikasi table : php artisan notifications:table, setelah itu migrate table noftificationnya
+setelah itu nitifikasi digunakan didalam livewirenya atau custom TALL (Tailwind,Alphine,Livewire,Laravel)
