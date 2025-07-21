@@ -277,3 +277,11 @@ if($user->can('classroom'))
 atau bisa langsung didalam ClassroomResource : 
 
 ![alt text](readme-asset/canView-filament.png)
+
+untuk mengedit Fitur Role dan Permission masih belum bisa
+
+19 Register Student
+
+Membuat Register Untuk student di frontend, dan juga membuat query untuk menyaring data di dalam model user
+
+tetapi ada yang tidak sukses, yaitu membuat tampilan fronent menggunakan livewire, dikarenakan tailwind nya tidak bisa di sambungkan, dan tools Vite nya juga

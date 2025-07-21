@@ -104,7 +104,7 @@ class AdminPanelProvider extends PanelProvider
                         ->items([
                             ...PeriodeResource::getNavigationItems(),
                             ...UserResource::getNavigationItems(),
-                            NavigationItem::make('Roles')
+                            NavigationItem::make('roles')
                             ->icon('heroicon-o-user-group')
                             ->isActiveWhen(fn ():bool => request()->routeIs([
                                 'filament.admin.resources.roles.index',
@@ -112,6 +112,7 @@ class AdminPanelProvider extends PanelProvider
                                 'filament.admin.resources.roles.view',
                                 'filament.admin.resources.roles.edit',
                             ]))
+                            ->visible(fn(): bool => auth()->user()->can('role-permission'))
                             ->url( fn (): string => '/admin/roles'),
                             NavigationItem::make('Permission')
                             ->icon('heroicon-o-lock-closed')
@@ -122,6 +123,7 @@ class AdminPanelProvider extends PanelProvider
                                 'filament.admin.resources.permissions.edit',
                             ]))
                             ->url( fn (): string => '/admin/permissions')
+                            ->visible(fn(): bool => auth()->user()->can('role-permission'))
                         ]),
                     ]);
             });
