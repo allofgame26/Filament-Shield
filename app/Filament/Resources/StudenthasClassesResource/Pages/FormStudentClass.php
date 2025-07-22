@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\StudenthasClassesResource\Pages;
 
 use App\Filament\Resources\StudenthasClassesResource;
+use App\Models\Classroom;
 use App\Models\homerooms;
 use App\Models\Periode;
 use App\Models\Student;
@@ -23,7 +24,7 @@ class FormStudentClass extends Page implements HasForms
     protected static string $view = 'filament.resources.studenthas-classes-resource.pages.form-student-class';
 
     public $students  = [];
-    public $homerooms = '';
+    public $classrooms = '';
     public $periode = '';
 
     public function mount(): void{
@@ -41,10 +42,10 @@ class FormStudentClass extends Page implements HasForms
                             ->label('Nama Murid')
                             ->options(Student::all()->pluck('name','id'))
                             ->columnSpan(3),
-                        Select::make('homerooms')
+                        Select::make('classrooms_id')
                             ->searchable()
                             ->label('Kelas')
-                            ->options(homerooms::all()->pluck('classroom.name','id')),
+                            ->options(Classroom::all()->pluck('name','id')),
                         Select::make('periode')
                             ->searchable()
                             ->label('Periode')
@@ -60,7 +61,7 @@ class FormStudentClass extends Page implements HasForms
         foreach($students as $row) {
             array_push($insert, [
                 'students_id' => $row,
-                'homerooms_id' => $this->homerooms,
+                'classrooms_id' => $this->classrooms,
                 'periode_id' => $this->periode,
                 'is_open' => 1
             ]);

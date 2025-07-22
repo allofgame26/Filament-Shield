@@ -127,7 +127,7 @@ class StudentResource extends Resource
                     ->options([
                         'accept' => 'Accept',
                         'off' => 'Off',
-                        'Move' => 'Move',
+                        'move' => 'Move',
                         'grade' => 'Grade',
                     ]),
                 ])

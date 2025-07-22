@@ -18,8 +18,8 @@ class student_has_classrooms extends Model
         return $this->belongsTo(Student::class,'students_id','id'); 
     }
 
-    public function homeroom(){
-        return $this->belongsTo(homerooms::class,'homerooms_id','id');
+    public function classroom(){
+        return $this->belongsTo(Classroom::class,'classroom_id','id');
     }
 
     public function periode(){

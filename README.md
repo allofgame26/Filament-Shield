@@ -201,7 +201,7 @@ untuk menambahkan tailwind nya di masukkan di dalam 'resources/css/app.css'
 (Masih Belum Berhasil)
 
 15 Tab Filter
-Membuat FIlter records di ListResource (menggunakan Resource Default (Data Master), buak Resource --simple).
+Membuat FIlter records di ListResource (menggunakan Resource Default (Data Master), bukan Resource --simple).
 Seperti Contoh di Documentation Filament :
 ![alt text](readme-asset/tab-filter.png)
 Bisa ditambahkan sesuai dengan kebutuhan
@@ -292,3 +292,7 @@ lalu memasukkan : ->databaseNotifications() ke dalam adminpanel
 install Notifivationnya : php artisan filament:install --notifications
 membuat notifikasi table : php artisan notifications:table, setelah itu migrate table noftificationnya
 setelah itu nitifikasi digunakan didalam livewirenya atau custom TALL (Tailwind,Alphine,Livewire,Laravel)
+
+21 Tab Filter Dynamic
+Membuatt filter yang dinamis
+![alt text](readme-asset/contohhakakses.png)

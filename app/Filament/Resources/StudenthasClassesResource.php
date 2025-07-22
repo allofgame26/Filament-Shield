@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\StudenthasClassesResource\Pages;
 use App\Filament\Resources\StudenthasClassesResource\RelationManagers;
+use App\Models\Classroom;
 use App\Models\homerooms;
 use App\Models\Periode;
 use App\Models\Student;
@@ -16,6 +17,7 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -38,10 +40,10 @@ class StudenthasClassesResource extends Resource
                         ->searchable()
                         ->required()
                         ->options(Student::all()->pluck('name','id')),
-                        Select::make('homerooms_id')
+                        Select::make('classrooms_id')
                         ->searchable()
                         ->required()
-                        ->options(homerooms::all()->pluck('classroom.name','id')),
+                        ->options(Classroom::all()->pluck('name','id')),
                         Select::make('periode_id')
                         ->searchable()
                         ->required()
@@ -55,10 +57,14 @@ class StudenthasClassesResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('students.name'),
-                TextColumn::make('homeroom.classroom.name')
+                TextColumn::make('classroom.name'),
+                TextColumn::make('periode.name')
             ])
             ->filters([
-                //
+                SelectFilter::make('classrooms_id')
+                    ->options(Classroom::all()->pluck('name','id')),
+                SelectFilter::make('periode_id')
+                    ->options(Periode::all()->pluck('name','id'))
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

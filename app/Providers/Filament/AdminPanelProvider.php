@@ -24,6 +24,7 @@ use Althinect\FilamentSpatieRolesPermissions\FilamentSpatieRolesPermissionsPlugi
 use App\Filament\Resources\CategoryNilaiResource;
 use App\Filament\Resources\ClassroomResource;
 use App\Filament\Resources\DepartementResource;
+use App\Filament\Resources\StudenthasClassesResource;
 use App\Filament\Resources\StudentResource;
 use App\Filament\Resources\SubjectResource;
 use App\Filament\Resources\TeacherResource;
@@ -59,7 +60,6 @@ class AdminPanelProvider extends PanelProvider
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
             ->widgets([
                 Widgets\AccountWidget::class,
-                Widgets\FilamentInfoWidget::class,
             ])
             ->middleware([
                 EncryptCookies::class,
@@ -91,6 +91,7 @@ class AdminPanelProvider extends PanelProvider
                         ]),
                     NavigationGroup::make('Data Akademik')
                         ->items([
+                            ...StudenthasClassesResource::getNavigationItems(),
                             ...StudentResource::getNavigationItems(),
                             ...TeacherResource::getNavigationItems(),
                             ...SubjectResource::getNavigationItems(),
