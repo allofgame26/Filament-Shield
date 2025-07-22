@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
 use Filament\Models\Contracts\HasTenants;
 use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -73,4 +74,6 @@ class User extends Authenticatable implements HasTenants
     public function team(){
         return $this->belongsToMany(Team::class);
     }
+
+
 }

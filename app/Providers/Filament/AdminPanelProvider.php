@@ -25,6 +25,7 @@ use App\Filament\Pages\Tenancy\RegisterTeam;
 use App\Filament\Resources\CategoryNilaiResource;
 use App\Filament\Resources\ClassroomResource;
 use App\Filament\Resources\DepartementResource;
+use App\Filament\Resources\NilaiResource;
 use App\Filament\Resources\StudenthasClassesResource;
 use App\Filament\Resources\StudentResource;
 use App\Filament\Resources\SubjectResource;
@@ -99,6 +100,7 @@ class AdminPanelProvider extends PanelProvider
                             ...StudentResource::getNavigationItems(),
                             ...TeacherResource::getNavigationItems(),
                             ...SubjectResource::getNavigationItems(),
+                            ...NilaiResource::getNavigationItems(),
                         ]),
                     NavigationGroup::make('Source')
                         ->items([

@@ -313,3 +313,15 @@ team_user -> digunakan untuk membuat user di dalam tenant
 
 23 Entry Nilai (dibutuhkan untuk fitur memilih barang donasi)
 
+jika Tenant dimasukkan kedalam adminpanel, off terlebih dahulu dengan cara dicomment, dan tidak usah dipakai, karena masih Trouble / error
+
+buat model dan migration baru untuk table nilai : php artisan make:model Nilai -m
+
+dan juga membuat Resource baru untuk NilaiResource : php artisan make:filament-resource NilaiResource
+
+memasukkan TextColumn dan TextInputnya, tetapi untuk Text input didalam Nilai Resource tidak digunakan, memakai nya didalam dalam NilaiResource/Pages/CreateNilai.php
+
+Membuat Forms didalam resource untuk membuat tombol save
+
+Membuat function form() dan save() didalam CreateNilai
+
