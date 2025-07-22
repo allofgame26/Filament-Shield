@@ -296,3 +296,20 @@ setelah itu nitifikasi digunakan didalam livewirenya atau custom TALL (Tailwind,
 21 Tab Filter Dynamic
 Membuatt filter yang dinamis
 ![alt text](readme-asset/contohhakakses.png)
+
+22 Multi - tenancy
+
+membuat Model dan Migartion untuk multi tenancy yaitu : Team dan team_user
+Team -> digunakan untuk membuat tenant
+team_user -> digunakan untuk membuat user di dalam tenant
+
+- membuat Model dan Migration untuk Team : php artisan make:model Team -m
+
+- membuat migration saja untuk team_user : php artisan make:migration team_user
+
+- menambahkan tenatt(Team::class) ke dalam adminpanel
+
+(Error, Mbulet i)
+
+23 Entry Nilai (dibutuhkan untuk fitur memilih barang donasi)
+

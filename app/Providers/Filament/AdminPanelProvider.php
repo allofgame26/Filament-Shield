@@ -21,6 +21,7 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Althinect\FilamentSpatieRolesPermissions\FilamentSpatieRolesPermissionsPlugin;
+use App\Filament\Pages\Tenancy\RegisterTeam;
 use App\Filament\Resources\CategoryNilaiResource;
 use App\Filament\Resources\ClassroomResource;
 use App\Filament\Resources\DepartementResource;
@@ -30,6 +31,7 @@ use App\Filament\Resources\SubjectResource;
 use App\Filament\Resources\TeacherResource;
 use App\Filament\Resources\UserResource;
 use App\Models\Student;
+use App\Models\Team;
 use Filament\Navigation\NavigationBuilder;
 use Filament\Navigation\NavigationGroup;
 use Filament\Navigation\NavigationItem;
@@ -80,6 +82,8 @@ class AdminPanelProvider extends PanelProvider
                 FilamentSpatieRolesPermissionsPlugin::make(),
             ])
             ->databaseNotifications()
+            // ->tenant(Team::class)
+            // ->tenantRegistration(RegisterTeam::class)
             ->navigation(function (NavigationBuilder $builder): NavigationBuilder{
                 return $builder->groups([
                     NavigationGroup::make()
